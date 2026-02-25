@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYTEZY Menu Roster Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="interactions.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Montserrat:wght@700&family=Bubblegum+Sans&family=Luckiest+Guy&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="toolbar">
+    <div>
+        <h1>🎨 BYTEZY Menu Editor</h1>
+        <p>Click any line to select · Drag handle to move · Corner to resize · A± to change font size</p>
+    </div>
+    <button onclick="downloadImage()">⬇️ Download Image</button>
+</div>
+
+<div class="canvas-wrapper">
+<div id="rosterToDownload" class="roster-container">
+
+    <!--
+    ═══════════════════════════════════════════════════════
+      EACH LINE IS INDEPENDENTLY POSITIONED (absolute)
+      Positions manually fine-tuned by user — this is the
+      canonical default layout. Do not change positions.
+      Canvas: 2000 × 1414 px
+    ═══════════════════════════════════════════════════════
+    -->
+
+    <!-- ── HEADER ─────────────────────────────────────── -->
+    <div class="el" id="el-bytezy"
+         style="left:795px; top:2px; width:440px;"
+         contenteditable="true" spellcheck="false">BYTEZY</div>
+
+    <div class="el" id="el-menu"
+         style="left:795px; top:88px; width:440px;"
+         contenteditable="true" spellcheck="false">MENU</div>
+
+    <!-- ── SECTION TITLES ─────────────────────────────── -->
+    <div class="el" id="el-sec-bk"
+         style="left:64px; top:160px; width:700px;"
+         contenteditable="true" spellcheck="false">BREAKFAST COMBO – ₹65</div>
+
+    <div class="el" id="el-sec-ln"
+         style="left:1100px; top:181px; width:700px;"
+         contenteditable="true" spellcheck="false">LUNCH COMBOS – ₹75</div>
+
+    <!-- ════════════════════════════════════════════════
+         LEFT COLUMN — BREAKFAST
+    ════════════════════════════════════════════════════ -->
+
+    <!-- Monday -->
+    <div class="el day-title" id="el-bk-mon-t"
+         style="left:75px; top:249px; width:800px;"
+         contenteditable="true" spellcheck="false">MONDAY – GOOD START COMBO</div>
+    <div class="el food-desc" id="el-bk-mon-f"
+         style="left:91px; top:327px; width:784px;"
+         contenteditable="true" spellcheck="false">Upma , Coconut Chutney</div>
+
+    <!-- Tuesday -->
+    <div class="el day-title" id="el-bk-tue-t"
+         style="left:75px; top:407px; width:800px;"
+         contenteditable="true" spellcheck="false">TUESDAY – ENERGY BOOST COMBO</div>
+    <div class="el food-desc" id="el-bk-tue-f"
+         style="left:91px; top:485px; width:784px;"
+         contenteditable="true" spellcheck="false">Poori , Potato Curry</div>
+
+    <!-- Wednesday -->
+    <div class="el day-title" id="el-bk-wed-t"
+         style="left:75px; top:565px; width:800px;"
+         contenteditable="true" spellcheck="false">WEDNESDAY – SMART BITE COMBO</div>
+    <div class="el food-desc" id="el-bk-wed-f"
+         style="left:91px; top:643px; width:784px;"
+         contenteditable="true" spellcheck="false">Pongal , Sambar</div>
+
+    <!-- Thursday -->
+    <div class="el day-title" id="el-bk-thu-t"
+         style="left:75px; top:723px; width:800px;"
+         contenteditable="true" spellcheck="false">THURSDAY – COMFORT FOOD COMBO</div>
+    <div class="el food-desc" id="el-bk-thu-f"
+         style="left:91px; top:801px; width:784px;"
+         contenteditable="true" spellcheck="false">Idli, Sambar, Chutney</div>
+
+    <!-- Friday -->
+    <div class="el day-title" id="el-bk-fri-t"
+         style="left:75px; top:881px; width:800px;"
+         contenteditable="true" spellcheck="false">FRIDAY – COLOR FUN COMBO</div>
+    <div class="el food-desc" id="el-bk-fri-f"
+         style="left:91px; top:959px; width:784px;"
+         contenteditable="true" spellcheck="false">Idiyappam, kuruma</div>
+
+    <!-- Saturday -->
+    <div class="el day-title" id="el-bk-sat-t"
+         style="left:75px; top:1039px; width:800px;"
+         contenteditable="true" spellcheck="false">SATURDAY – HAPPY TUMMY COMBO</div>
+    <div class="el food-desc" id="el-bk-sat-f"
+         style="left:91px; top:1117px; width:784px;"
+         contenteditable="true" spellcheck="false">Puttu, Green Gram curry</div>
+
+
+    <!-- ════════════════════════════════════════════════
+         RIGHT COLUMN — LUNCH
+    ════════════════════════════════════════════════════ -->
+
+    <!-- Monday -->
+    <div class="el day-title" id="el-ln-mon-t"
+         style="left:1109px; top:298px; width:680px;"
+         contenteditable="true" spellcheck="false">MONDAY – CLASSIC CARE COMBO</div>
+    <div class="el food-desc" id="el-ln-mon-f"
+         style="left:1125px; top:376px; width:664px;"
+         contenteditable="true" spellcheck="false">Tomato Rice , Lemon Rice, Applam, poriyal</div>
+
+    <!-- Tuesday -->
+    <div class="el day-title" id="el-ln-tue-t"
+         style="left:1109px; top:458px; width:680px;"
+         contenteditable="true" spellcheck="false">TUESDAY – PROTEIN POWER COMBO</div>
+    <div class="el food-desc" id="el-ln-tue-f"
+         style="left:1125px; top:536px; width:664px;"
+         contenteditable="true" spellcheck="false">White Rice, sambar, Poriyal, Rasam, Butter milk, Applam</div>
+
+    <!-- Wednesday (special) -->
+    <div class="el day-title" id="el-ln-wed-t"
+         style="left:1109px; top:618px; width:680px;"
+         contenteditable="true" spellcheck="false">WEDNESDAY WOW COMBO – <span class="price-highlight">₹120</span></div>
+    <div class="el food-desc" id="el-ln-wed-f"
+         style="left:1125px; top:696px; width:664px;"
+         contenteditable="true" spellcheck="false">Chicken Biryani, Raitha</div>
+
+    <!-- Thursday -->
+    <div class="el day-title" id="el-ln-thu-t"
+         style="left:1109px; top:778px; width:680px;"
+         contenteditable="true" spellcheck="false">THURSDAY – TANGY TREAT COMBO</div>
+    <div class="el food-desc" id="el-ln-thu-f"
+         style="left:1125px; top:856px; width:664px;"
+         contenteditable="true" spellcheck="false">Garlic Rice , Curd Rice, Poriyal</div>
+
+    <!-- Friday -->
+    <div class="el day-title" id="el-ln-fri-t"
+         style="left:1109px; top:938px; width:680px;"
+         contenteditable="true" spellcheck="false">FRIDAY – FUN RICE COMBO</div>
+    <div class="el food-desc" id="el-ln-fri-f"
+         style="left:1125px; top:1016px; width:664px;"
+         contenteditable="true" spellcheck="false">Veg Biriyani, Egg, Ritha</div>
+
+    <!-- Saturday -->
+    <div class="el day-title" id="el-ln-sat-t"
+         style="left:1109px; top:1098px; width:680px;"
+         contenteditable="true" spellcheck="false">SATURDAY – GREEN HEALTH COMBO</div>
+    <div class="el food-desc" id="el-ln-sat-f"
+         style="left:1125px; top:1176px; width:664px;"
+         contenteditable="true" spellcheck="false">White Rice, Green Leaf Curry, Poriyal</div>
+
+    <!-- ── PRICE WATERMARKS ─────────────────────────── -->
+    <div class="el" id="el-price-30"
+         style="left:942px; top:1068px; width:80px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:22px; color:white;"
+         contenteditable="true" spellcheck="false">₹30</div>
+    <div class="el" id="el-price-35"
+         style="left:942px; top:1110px; width:80px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:22px; color:white;"
+         contenteditable="true" spellcheck="false">₹35</div>
+
+</div><!-- /#rosterToDownload -->
+</div><!-- /.canvas-wrapper -->
+
+<script src="script.js"></script>
+</body>
+</html>
